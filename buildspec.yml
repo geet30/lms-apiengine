@@ -1,0 +1,74 @@
+version: 0.2
+env:
+  variables:
+    SECRET_ID: "arn:aws:secretsmanager:ap-southeast-2:594695056120:secret:cimet-qa-secrets-waTkbq"
+phases:
+ install:
+   commands:
+     - apt -y update
+     - apt -y install jq awscli
+     - composer update
+     - composer install
+     - composer require --dev
+     - php artisan cache:clear
+
+ pre_build:
+   commands:
+     # Dependency Check Install
+     #- wget https://github.com/jeremylong/DependencyCheck/releases/download/v7.1.0/dependency-check-7.1.0-release.zip
+     #- unzip dependency-check-7.1.0-release.zip
+     #- chmod -R 775 $CODEBUILD_SRC_DIR/dependency-check/bin/dependency-check.sh
+     #- rm -f dependency-check-7.1.0-release.zip
+     - echo "stage pre_build completed"
+
+ build:
+   on-failure: ABORT
+   commands:
+    # Secret Manager
+     - echo Get Environment variables from AWS SECRETS MANAGER
+     - aws secretsmanager get-secret-value --secret-id $SECRET_ID --region ap-southeast-2 --query SecretString --output text | jq -r 'to_entries[] | [.key, "=", "\"", .value, "\"" ]| @tsv' | tr -d "\t" > .env
+    # Dependency Check Run
+     #- $CODEBUILD_SRC_DIR/dependency-check/bin/dependency-check.sh --project "Laravel" --format JSON --prettyPrint --enableExperimental --scan $CODEBUILD_SRC_DIR/app --exclude '$CODEBUILD_SRC_DIR/dependency-check/'
+     #- echo "OWASP dependency check analysis status is completed...";
+    #- high_risk_dependency=$( grep -c "HIGHEST" dependency-check-report.json )
+     #- high_risk_dependency=$( sed -n /HIGHEST/p  dependency-check-report.json | wc -l )
+     #- echo $?
+     - |
+       # if [ $high_risk_dependency -eq 0 ]; then
+        # echo "Passing the Test"
+        #else
+        # echo "there are high or medium alerts.. failing the build"
+        # exit 1
+       # fi
+
+    # PHPSTAN Step
+     #- vendor/bin/phpstan analyse $CODEBUILD_SRC_DIR/server.php -c $CODEBUILD_SRC_DIR/phpstan.neon > vendor/phpstan-result
+     #- echo "phpstan scan completed. Analysing the results......"
+
+    # PHPUNIT Test
+     #- cd $CODEBUILD_SRC_DIR
+     #- php artisan test > vendor/phpunit-results.json
+
+ post_build:
+   commands:
+     #- phpstan_fileerrors=$(cat vendor/phpstan-results.json | jq -r '.totals.file_errors')
+     #- echo "phpstan errors count is "  $phpstan_fileerrors
+     - |
+       # if [ $phpstan_fileerrors -gt 0 ]; then
+       # jq   \
+       # "{ \"messageType\": \"CodeScanReport\", \"reportType\": \"PHPStan\", \
+       # \"createdAt\": $(date +\"%Y-%m-%dT%H:%M:%S.%3NZ\"), \"source_repository\": env.CODEBUILD_SOURCE_REPO_URL, \
+       # \"source_branch\": env.CODEBUILD_SOURCE_VERSION, \
+       # \"build_id\": env.CODEBUILD_BUILD_ID, \
+       # \"source_commitid\": env.CODEBUILD_RESOLVED_SOURCE_VERSION, \
+       # \"report\": . }" vendor/phpstan-results.json > payload.json
+       # echo "There are some errors/vulnerabilities reported in the phpstan scan. Stopping the build process.";
+       #  echo "completed gathering the phpstan report";
+       # else
+       #   echo "no vulnerabilities found in phpstan scan"
+       # fi
+     - echo Build completed on `date`
+
+artifacts:
+   files:
+     - '**/*'

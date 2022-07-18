@@ -1,0 +1,14 @@
+Endevour
+Distributor,Tariff Type,Tariff Name,Offer Type,Property Type,DMO/VDO Annual Price,DMO/VDO Yearly Total Annual Usage ,Peak Usage Only,Peak Usage (Peak-Off Peak),Off Peak Usage  (Peak-Off Peak),Peak Usage (Peak-Off Peak-Shoulder),Off Peak Usage (Peak-Off Peak-Shoulder),Shoulder Usage (Peak-Off Peak-Shoulder),Peak Usage (Peak-Off Peak-Shoulder 1 & 2),Off Peak Usage (Peak-Off Peak-Shoulder 1 & 2),Shoulder Usage 1 (Peak-Off Peak-Shoulder 1 & 2),Shoulder Usage 2 (Peak-Off Peak-Shoulder 1 & 2),control load 1 only,control load 2 only,Control load 1 usage  (C1&C2 Case),Control load 2 usage (C1&C2 Case)
+Endevour Energy,peak_only,Peak Only,DMO,Residential,1720,4900,4900,,,,,,,,,,,,,
+Endevour Energy,two_rate_only,Two rate only,DMO,Residential,1720,4900,4900,,,,,,,,,,,,,
+Endevour Energy,peak_c1,Peak with control load 1,DMO,Residential,2166,5200,5200,,,,,,,,,,2200,,,
+Endevour Energy,peak_c2,Peak with control load 2,DMO,Residential,2166,5200,5200,,,,,,,,,,,2200,,
+Endevour Energy,peak_c1_c2,Peak with control load 1 & 2,DMO,Residential,2166,5200,5200,,,,,,,,,,2200,2200,1474,726
+Endevour Energy,timeofuse_only,Time of use only,DMO,Residential,1720,4900,4900,3273.2,1626.8,1646.4,1337.7,1915.9,,,,,,,,
+Endevour Energy,timeofuse_c1,Time of use with control load 1,DMO,Residential,2166,5200,5200,3473.6,1726.4,1747.2,1419.6,2033.2,,,,,2200,,,
+Endevour Energy,timeofuse_c2,Time of use with control load 2,DMO,Residential,2166,5200,5200,3473.6,1726.4,1747.2,1419.6,2033.2,,,,,,2200,,
+Endevour Energy,timeofuse_c1_c2,Time of use with control load 1 & 2,DMO,Residential,2166,5200,5200,3473.6,1726.4,1747.2,1419.6,2033.2,,,,,2200,2200,1474,726
+Endevour Energy,peak_only,Peak Only,DMO,Business,6204,20000,20000,,,,,,,,,,,,,
+Endevour Energy,two_rate_only,Two rate only,DMO,Business,6204,20000,20000,,,,,,,,,,,,,
+Endevour Energy,peak_c1,Peak with control load 1,DMO,Business,6204,20000,20000,,,,,,,,,,,,,

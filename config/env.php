@@ -1,0 +1,56 @@
+<?php
+
+return [
+    'DEV_FOLDER'                =>  env('DEV_FOLDER'),
+    'Public_BUCKET_ORIGIN'      =>  env('BUCKET_ORIGIN_PUB'),
+    'BUCKET_ACCESS_KEY_PRIVATE' =>  env('BUCKET_ACCESS_KEY_PRIVATE'),
+    'BUCKET_SECRET_KEY_PRIVATE' =>  env('BUCKET_SECRET_KEY_PRIVATE'),
+    'BUCKET_REGION_PRIVATE'     =>  env('BUCKET_REGION_PRIVATE'),
+    'BUCKET_FOLDER_PRIVATE'     =>  env('BUCKET_FOLDER_PRIVATE'),
+    'PAGINATION_PERPAGE_COUNT'  =>  env('PAGINATION_PERPAGE_COUNT'),
+    'AWS_BUCKET'                => 'mobile-compare',
+    'AFFILIATE_LOGO'            =>  'affiliate/<aff-id>/logo/',
+    'PROVIDER_LOGO'             =>  'provider/<pro-id>/logo/',
+    'PLAN_REFERENCE'            =>  'provider/<provider-plan-id>/reference/',
+    'IDENTIFICATION_DOCUMENT'  =>  'sales/<lead-id>/id_document/',
+    'DEFAULT_REGION' => 'ap-southeast-2',
+    // 'SPARKPOST_API_KEY' => '9Y22J-V3G2B-FLL6A-16466-31453', // DEV 01
+    'SPARKPOST_API_KEY' => env('SPARKPOST_API_KEY'),
+    'AFFILIATE_API_KEY' => env('AFFILIATE_API_KEY'),
+    // 'SPARKPOST_URL' => 'https://ye8du5p9ce.execute-api.ap-southeast-2.amazonaws.com/SparkpostDev-stage', // DEV 01
+    'SPARKPOST_URL' => env('SPARKPOST_URL'),
+    'FROM_EMAIL' => 'support@cimet.com.au',
+    'SPARKPOST_AFFILIATE_KEY' => '8d55f596e1c0422740a5b40dc38c79044a4b4c96',
+    'SMS_LOGIN' => env('SMS_LOGIN'),
+    'GET_PLIVO_NUMBER' => env('GET_PLIVO_NUMBER'),
+    'HANDSET_LOGO' => "handsets/<handset_id>/logo/",
+    'HANDSET_MORE_INFO' => "handsets/<handset_id>/more-info/<handset_info_id>/",
+    'redLumo' => [
+        'redlumo_sale_url' => env('redlumo_sale_url'),
+        'redlumo_auth' => env('redlumo_auth'),
+        'red_energy' => env('red_energy'),
+        'lumo_energy' => env('lumo_energy')
+    ],
+    'ALINTA_ID' => env('ALINTA_ID'),
+    'ACTEWAGL_ID' => env('ACTEWAGL_ID'),
+    'FIRSTENERGY_ID' => env('FIRSTENERGY_ID'),
+    'SUMOPOWER_ID' => env('SUMOPOWER_ID'),
+    'SIMPLYENERGY_ID' => env('SIMPLYENERGY_ID'),
+    'MOMENTUMENERGY_ID' => env('MOMENTUMENERGY_ID'),
+    'TANGO_ID' => env('TANGO_ID'),
+    'ENERGYLOCALS_ID' => env('ENERGYLOCALS_ID'),
+    'BLUENRG_ID' => env('BLUENRG_ID'),
+    'DODOENERGY_ID' => env('DODOENERGY_ID'),
+    'ENERGY_AUSTRALIA' => env('ENERGY_AUSTRALIA'),
+    'POWERSHOP' => env('POWERSHOP'),
+    'OVO_ID' => env('OVO_ID'),
+    'RED_ENERGY_ID' => env('RED_ENERGY_ID'),
+    'ORIGIN_ID' => env('ORIGIN_ID'),
+    'AGL_ID' => env('AGL_ID'),
+    'allow_email' => '@cimet\.com\.au',
+    'SALE_EXPORT_PATH' => "export/sale/<year>/<month>/<day>/",
+    'LEAD_EXPORT_PATH' => "export/lead/<year>/<month>/<day>/",
+    'SPARKPOST_MAIL' => env('SPARKPOST_MAIL'),
+];
+
+
